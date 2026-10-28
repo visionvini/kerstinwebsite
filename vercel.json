@@ -2,25 +2,95 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/einzelsetting", "destination": "/einzeltherapie", "permanent": true },
-    { "source": "/paartherapie7fbeb0f2", "destination": "/paartherapie", "permanent": true },
-    { "source": "/gruppensitzungen", "destination": "/gruppe", "permanent": true },
-    { "source": "/als-form-der-psychotherapie-f%C3%BCr-menschen-mit-einer-geistigen-behinderung", "destination": "/lebenskrisen", "permanent": true },
-    { "source": "/als-form-der-psychotherapie-für-menschen-mit-einer-geistigen-behinderung", "destination": "/lebenskrisen", "permanent": true },
-    { "source": "/zur-bew%C3%A4ltigung-von-umbruchsituationen--lebenskrisen--burnout-und-schlafst%C3%B6rungen", "destination": "/geistige-behinderung", "permanent": true },
-    { "source": "/zur-bewältigung-von-umbruchsituationen--lebenskrisen--burnout-und-schlafstörungen", "destination": "/geistige-behinderung", "permanent": true },
-    { "source": "/bei-psychischen-erkrankungen", "destination": "/psychische-belastungen", "permanent": true },
-    { "source": "/%C3%BCber-mich", "destination": "/ueber-mich", "permanent": true },
-    { "source": "/über-mich", "destination": "/ueber-mich", "permanent": true },
-    { "source": "/mehr-zu-mir", "destination": "/ueber-mich", "permanent": true },
-    { "source": "/pers%C3%B6nliches", "destination": "/ueber-mich", "permanent": true },
-    { "source": "/persönliches", "destination": "/ueber-mich", "permanent": true },
-    { "source": "/r%C3%BCckmeldungen", "destination": "/rueckmeldungen", "permanent": true },
-    { "source": "/rückmeldungen", "destination": "/rueckmeldungen", "permanent": true },
-    { "source": "/datenschutzerklarung", "destination": "/datenschutz", "permanent": true },
-    { "source": "/blog", "destination": "/", "permanent": true },
-    { "source": "/willkommen", "destination": "/", "permanent": true },
-    { "source": "/wenn", "destination": "/", "permanent": true },
-    { "source": "/links", "destination": "/", "permanent": true }
+    {
+      "source": "/einzelsetting",
+      "destination": "/einzeltherapie",
+      "permanent": true
+    },
+    {
+      "source": "/paartherapie7fbeb0f2",
+      "destination": "/paartherapie",
+      "permanent": true
+    },
+    {
+      "source": "/gruppensitzungen",
+      "destination": "/gruppe",
+      "permanent": true
+    },
+    {
+      "source": "/als-form-der-psychotherapie-f%C3%BCr-menschen-mit-einer-geistigen-behinderung",
+      "destination": "/lebenskrisen",
+      "permanent": true
+    },
+    {
+      "source": "/als-form-der-psychotherapie-für-menschen-mit-einer-geistigen-behinderung",
+      "destination": "/lebenskrisen",
+      "permanent": true
+    },
+    {
+      "source": "/zur-bew%C3%A4ltigung-von-umbruchsituationen--lebenskrisen--burnout-und-schlafst%C3%B6rungen",
+      "destination": "/geistige-behinderung",
+      "permanent": true
+    },
+    {
+      "source": "/zur-bewältigung-von-umbruchsituationen--lebenskrisen--burnout-und-schlafstörungen",
+      "destination": "/geistige-behinderung",
+      "permanent": true
+    },
+    {
+      "source": "/bei-psychischen-erkrankungen",
+      "destination": "/psychische-belastungen",
+      "permanent": true
+    },
+    {
+      "source": "/%C3%BCber-mich",
+      "destination": "/ueber-mich",
+      "permanent": true
+    },
+    {
+      "source": "/über-mich",
+      "destination": "/ueber-mich",
+      "permanent": true
+    },
+    {
+      "source": "/pers%C3%B6nliches",
+      "destination": "/ueber-mich",
+      "permanent": true
+    },
+    {
+      "source": "/persönliches",
+      "destination": "/ueber-mich",
+      "permanent": true
+    },
+    {
+      "source": "/r%C3%BCckmeldungen",
+      "destination": "/rueckmeldungen",
+      "permanent": true
+    },
+    {
+      "source": "/rückmeldungen",
+      "destination": "/rueckmeldungen",
+      "permanent": true
+    },
+    {
+      "source": "/datenschutzerklarung",
+      "destination": "/datenschutz",
+      "permanent": true
+    },
+    {
+      "source": "/blog",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/willkommen",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/wenn",
+      "destination": "/",
+      "permanent": true
+    }
   ]
 }
