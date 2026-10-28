@@ -70,7 +70,7 @@ export const pages: PageData[] = [
       },
       {
         h2: 'Niemand muss einsam bleiben',
-        paragraphs: ['Ein Kurs in 5 Schritten, der online stattfindet.'],
+        paragraphs: ['Ein Kurs in fünf Schritten, der online stattfindet.'],
         link: { href: '/niemand-muss-einsam-bleiben', label: 'Zum Kurs' },
       },
       {
@@ -82,7 +82,7 @@ export const pages: PageData[] = [
       },
       {
         paragraphs: [
-          `Es geht darum, Platz zu schaffen im Inneren wie im Äußeren für das, was sowieso schon immer da war in der Verbindung mit deinem wahren Sein.`,
+          `Es geht darum, Platz zu schaffen im Inneren wie im Äußeren für das, was sowieso schon immer da war, die Verbindung mit deinem wahren Sein.`,
           `Sich dieser Verbindung wieder vollkommen bewusst zu sein, sie täglich zu stärken, aus ihr heraus zu leben und Entscheidungen zu treffen, die klar und einfach sind. Unnötigkeiten zu verabschieden und das Wesentliche zu leben, das ist der Leitstern.`,
           `Wie genau das aussieht, was deine persönliche Facette des Seins ist, wird im Prozess deutlich.`,
           `Überhaupt – wir können einfach schauen, was dran ist; von den tiefsten Tiefen, den Verdichtungen bis zu den luftigen Visionen, die sich materialisieren wollen, alles hat seinen Platz.`,
@@ -104,7 +104,7 @@ export const pages: PageData[] = [
     intro: 'Nach Bedarf, Wunsch, Bedürfnis: ein längerer gemeinsamer Prozess, ein einmaliger Termin zu einem bestimmten Thema oder eine intensive Begleitung über einen bestimmten Zeitraum.',
     sections: [
       {
-        h2: 'So arbeiten wir',
+        h2: 'So arbeite ich',
         paragraphs: [
           'Ich kombiniere die Haltung und Methoden der Gestalttherapie mit energetischem Wirken, wenn Offenheit dafür besteht.',
           'Dauer einer Einzelsitzung: 1 Zeitstunde. Kosten: 80,- Euro. Ermäßigung für Menschen in Ausbildung ist möglich.',
@@ -134,7 +134,7 @@ export const pages: PageData[] = [
           'Paar sein und Paar bleiben durch die verschiedenen Lebensphasen hindurch und mit vielfältigen Lebensereignissen konfrontiert, kann zu einer Herausforderung werden. Zwei Menschen mit unterschiedlichen Lebensgeschichten, Vorstellungen, Sichtweisen und Empfindungen, sowie mit einer unterschiedlichen Art und Weise an Dinge heranzugehen, wollen diese Dinge gemeinsam meistern. Dabei kann es zu Schwierigkeiten kommen, die sich in Streitereien und gegenseitigen Verletzungen äußern. Ebenso können festgefahrene Muster und Verhärtungen die Partnerschaft lähmen und die in Beziehung stehenden Personen in ihrer persönlichen Entwicklung blockieren.',
           'Dauern die Auseinandersetzungen oder die Gefühle des Festgefahrenseins an und finden keinen konstruktiven Ausweg, ist eine Paartherapie sehr hilfreich und sinnvoll.',
         ],
-        image: { src: '/bilder/fingerhut-nah.jpg', alt: 'Blüten des Fingerhuts', shape: 2, ratio: '4/3' },
+        image: { src: '/bilder/fingerhut-nah.jpg', alt: 'Blüten des Fingerhuts', shape: 2, ratio: '4/5' },
       },
       {
         h2: 'Als Paartherapeutin unterstütze ich Sie gerne',
@@ -157,10 +157,10 @@ export const pages: PageData[] = [
       {
         h2: 'Praktisches',
         items: [
-          'Wo? Die Paartherapie findet persönlich in meiner Praxis statt. [KLÄREN: Ort aktuell? Bisher Stuttgart-Plieningen, die Praxis wurde auf online umgestellt]',
+          'Wo? Die Paartherapie findet persönlich in meiner Praxis statt.', // TODO KLÄREN: Ort aktuell? Bisher Stuttgart-Plieningen, Praxis auf online umgestellt
           'Wie oft? Die Abstände für unsere Sitzungen legen wir in gemeinsamer Absprache fest',
           'Wie lange? Eine Sitzung dauert 90 Minuten',
-          'Kosten? Eine Sitzung kostet 150€ [KLÄREN: aktuell?]',
+          'Kosten? Eine Sitzung kostet 150€', // TODO KLÄREN: Preis aktuell?
         ],
       },
     ],
@@ -199,7 +199,7 @@ export const pages: PageData[] = [
       },
       {
         h2: 'Gruppentermine',
-        paragraphs: ['[KLÄREN: Die bisherigen Termine (bis 2024) sind abgelaufen. Aktuelle Termine, Ort, Gruppengröße und Preis ergänzen oder die Seite über `gruppeAktiv` in site.ts ausschalten.]'],
+        paragraphs: ['Gruppentermine finden derzeit keine statt.'],
         image: { src: '/bilder/stuehle.jpg', alt: 'Tisch mit Stühlen', shape: 2, ratio: '4/3' },
       },
     ],
@@ -219,7 +219,7 @@ export const pages: PageData[] = [
         paragraphs: [
           'Ich habe mich entschieden, für den Moment den festen gewohnten Rahmen der Form (eines strukturierten Praxisalltags) zu verlassen, mein Angebot auf online zu verlagern, wobei persönliche Treffen möglich sind, wenn es die räumliche Nähe zulässt. Dabei möchte ich mit dir sehr offen schauen, was zu welchen Konditionen und zu welchen Zeiten sinnvoll und gewünscht ist.',
           'Melde dich für ein kostenfreies telefonisches Erstgespräch.',
-          'Die Online-Termine finden auf einem speziellen Therapie-Portal statt, auf dem der Datenschutz gewährleistet ist. [KLÄREN: Name des Portals, gilt das auch für Paare?]',
+          'Die Online-Termine finden auf einem speziellen Therapie-Portal statt, auf dem der Datenschutz gewährleistet ist.', // TODO KLÄREN: Name des Portals, gilt das auch für Paare?
         ],
         image: { src: '/bilder/meer-sonne.jpg', alt: 'Sonne über dem Meer', shape: 1, ratio: '4/3' },
       },
@@ -262,6 +262,7 @@ export const pages: PageData[] = [
     title: 'Ausrichtung | Kerstin Bonke',
     h1: 'Ausrichtung',
     meta: 'Zwischen Wissen um die Einheit und dem Alltag: warum es hilft, sich auch den inneren Zuständen zuzuwenden, die nicht der Ausrichtung entsprechen.',
+    heroImage: { src: '/bilder/startseite-hero-berge.jpg', alt: 'Adler auf einem Felsen vor Bergen', shape: 2, ratio: '3/2' },
     sections: [
       {
         paragraphs: [
@@ -384,14 +385,14 @@ export const pages: PageData[] = [
     title: 'Gestalttherapie für Expats, online auf Deutsch | Bonke',
     h1: 'Expats',
     meta: 'Gestalttherapie online für Menschen, die im Ausland leben: diskret, in der Muttersprache Deutsch, mit präsenter und wertfreier Haltung.',
-    heroImage: { src: '/bilder/expats-haus.jpg', alt: 'Ein kleines pastellgrünes Haus unter blauem Himmel', shape: 2, ratio: '1/1' },
+    heroImage: { src: '/bilder/expats-haus.jpg', alt: 'Ein kleines pastellgrünes Haus unter blauem Himmel', shape: 2, ratio: '3/4' },
     quote: { text: 'Veränderung wird zum Rhythmus', author: 'Stella Resnick' },
     sections: [
       {
         paragraphs: [
-          'Während der längeren Zeiten, die ich mich selbst im Ausland aufhielt, habe ich viele verschiedene Formen von Leben im Ausland kennengelernt.',
-          'Natürlich ergeben sich auch in dieser, in der Regel frei gewählten, Lebenssituation Themen, die du dir möglicherweise nicht mit jemandem aus der Community, sondern diskret und in der Muttersprache Deutsch besprechen möchtest.',
-          'Mit einer präsenten und wertfreien Haltung, mit meiner Erfahrung und gleichzeitig Offenheit für das Neue stehe ich dafür zur Verfügung. Ich bin es gewohnt online zu arbeiten und auch in dieser Begegnungsform eine tragende Beziehung entstehen zu lassen.',
+          'Während der längeren Zeiten, die ich mich selbst außerhalb von Deutschland aufhielt, habe ich viele verschiedene Formen von Leben im Ausland kennengelernt.',
+          'Natürlich ergeben sich auch in dieser, in der Regel frei gewählten, Lebenssituation Themen, die du dir möglicherweise nicht mit jemandem aus der Community, sondern diskret und in der Muttersprache Deutsch besprechen möchtest. Mit einer präsenten und wertfreien Haltung, mit meiner Erfahrung und gleichzeitig Offenheit für das Neue stehe ich dafür zur Verfügung.',
+          'Ich bin es gewohnt, online zu arbeiten und auch in dieser Begegnungsform eine tragende Beziehung entstehen zu lassen.',
           'Vielleicht',
         ],
         items: [
@@ -415,15 +416,16 @@ export const pages: PageData[] = [
     slug: 'niemand-muss-einsam-bleiben',
     title: 'Niemand muss einsam bleiben: Online-Kurs | Kerstin Bonke',
     h1: 'Niemand muss einsam bleiben',
-    meta: 'Ein Kurs in 5 Schritten, online: mit den Methoden der Gestalttherapie die ersten Schritte in ein Leben mit den gewünschten Sozialkontakten gehen.',
-    heroImage: { src: '/bilder/einsam-stuehle.jpg', alt: 'Zwei verschiedene Stühle nebeneinander in einer Wiese', shape: 3, ratio: '1/1' },
-    intro: 'Ein Kurs in 5 Schritten, der online stattfindet.',
+    meta: 'Ein Kurs in fünf Schritten, online: mit den Methoden der Gestalttherapie die ersten Schritte in ein Leben mit den gewünschten Sozialkontakten gehen.',
+    heroImage: { src: '/bilder/einsam-stuehle.jpg', alt: 'Zwei verschiedene Stühle nebeneinander in einer Wiese', shape: 3, ratio: '3/2' },
+    intro: 'Ein Kurs in fünf Schritten, der online stattfindet.',
     sections: [
       {
         paragraphs: [
-          '5 Termine, bei denen mit den Methoden der Gestalttherapie die ersten 5 Schritte unternommen werden in ein Leben mit den gewünschten Sozialkontakten.',
-          'Online Begegnung 1:1',
-          'Kosten für den gesamten Kurs, 5 Termine nach individueller Absprache, jeweils eine Stunde: 380,- Euro',
+          'Fünf Termine, bei denen mit den Methoden der Gestalttherapie die ersten fünf Schritte unternommen werden, in ein Leben mit den gewünschten Sozialkontakten.',
+          'Vollkommen individuell ausgerichtet auf das eigene Leben.',
+          'Onlinebegegnung 1:1',
+          'Kosten für den gesamten Kurs: 380 €. 5 Termine nach individueller Absprache, jeweils 1 Stunde.',
         ],
       },
     ],

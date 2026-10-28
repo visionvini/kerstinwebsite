@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import { site, ortSuffix } from '../config/site';
+import { visiblePages } from '../data/pages';
 import { rezensionen as alle } from '../data/rezensionen';
 import Wave from '../components/Wave.astro';
 import BlobImage from '../components/BlobImage.astro';
@@ -16,6 +17,7 @@ const rezensionen = [...alle].sort((a, b) => {
   const ia = idx(a.name), ib = idx(b.name);
   return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
 });
+const themenSeiten = visiblePages.filter((p) => p.nav === 'themen');
 const FARBEN = 'mb-6 break-inside-avoid rounded-[2rem] bg-white p-7 shadow-sm';
 ---
 <Base title={title} description={description} isHome>
@@ -72,9 +74,8 @@ const FARBEN = 'mb-6 break-inside-avoid rounded-[2rem] bg-white p-7 shadow-sm';
         <a class="mt-4 inline-block" href="/ueber-mich">Mehr über mich</a>
         <h3 class="mt-8 text-xl text-accent">Themen</h3>
         <ul class="mt-3 space-y-2">
-          <li><a href="/lebenskrisen">Lebenskrisen und Umbrüche</a></li>
-          <li><a href="/psychische-belastungen">Psychische Belastungen</a></li>
-          <li><a href="/geistige-behinderung">Menschen mit kognitiver Beeinträchtigung</a></li>
+          <li><a href="/gestalt">Gestalttherapie</a></li>
+          {themenSeiten.map((p) => <li><a href={`/${p.slug}`}>{p.navLabel}</a></li>)}
         </ul>
       </div>
     </div>
