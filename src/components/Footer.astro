@@ -1,0 +1,65 @@
+---
+import { site } from '../config/site';
+import Wave from './Wave.astro';
+
+// `bg` = Hintergrundfarbe der Sektion direkt über dem Footer (Startseite endet auf "soft", alle anderen auf "page").
+interface Props { bg?: string }
+const { bg = 'page' } = Astro.props;
+---
+<Wave fill="accent" bg={bg} variant={3} />
+<footer class="bg-accent text-white [&_a]:text-white [&_a]:underline-offset-4 hover:[&_a]:text-sea">
+  <div class="mx-auto max-w-6xl px-4 pt-4 md:pt-6 pb-8 md:pb-10 grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-6 md:gap-8 text-sm">
+    <div class="col-span-2 md:col-span-1 text-center md:text-left">
+      <p class="font-serif text-lg text-white">{site.brand}</p>
+      <address class="not-italic mt-2">
+        {site.strasse}<br />{site.plz} {site.ort}<br />
+        <a href={`tel:${site.telefon.replace(/\s/g, '')}`}>{site.telefonAnzeige}</a><br />
+        <a href={`mailto:${site.email}`}>{site.email}</a>
+      </address>
+    </div>
+    <nav aria-label="Seiten" class="text-center md:text-left">
+      <p class="font-semibold">Angebot</p>
+      <ul class="mt-2 space-y-1">
+        <li><a href="/gestalttherapie">Gestalttherapie</a></li>
+        <li><a href="/einzeltherapie">Einzeltherapie</a></li>
+        <li><a href="/paartherapie">Paartherapie</a></li>
+        <li><a href="/online-therapie">Online</a></li>
+      </ul>
+    </nav>
+    <nav aria-label="Mehr" class="text-center md:text-left">
+      <p class="font-semibold">Mehr</p>
+      <ul class="mt-2 space-y-1">
+        <li><a href="/ueber-mich">Über mich</a></li>
+        <li><a href="/rueckmeldungen">Rückmeldungen</a></li>
+        <li><a href="/kontakt">Kontakt</a></li>
+        <li><a href={site.instagram} rel="noopener">Instagram</a></li>
+      </ul>
+    </nav>
+    <!-- Desktop: ganz rechts Rechtliches, darunter Copyright und Credit -->
+    <div class="hidden md:block text-right">
+      <nav aria-label="Rechtliches">
+        <ul class="space-y-1">
+          <li><a href="/impressum">Impressum</a></li>
+          <li><a href="/datenschutz">Datenschutz</a></li>
+          <li><a href="/links">Links</a></li>
+        </ul>
+      </nav>
+      <p class="mt-6 text-white/85">Copyright 2026 Kerstin Bonke</p>
+      <p class="mt-1 text-white/85">Konzept und Realisierung <a class="no-underline hover:no-underline" href="https://vinculostudio.de" rel="noopener">Vinculo Studio</a></p>
+    </div>
+    <!-- Mobil: Fußzeile mit Copyright links, Rechtliches rechts -->
+    <div class="md:hidden col-span-2 flex justify-between items-end gap-4 border-t border-white/20 pt-4 text-xs text-white/85">
+      <div>
+        <p>Copyright 2026 Kerstin Bonke</p>
+        <p class="mt-1">Konzept und Realisierung <a class="no-underline hover:no-underline" href="https://vinculostudio.de" rel="noopener">Vinculo Studio</a></p>
+      </div>
+      <nav aria-label="Rechtliches" class="text-right">
+        <ul class="space-y-1">
+          <li><a href="/impressum">Impressum</a></li>
+          <li><a href="/datenschutz">Datenschutz</a></li>
+          <li><a href="/links">Links</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</footer>

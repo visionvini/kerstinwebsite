@@ -1,0 +1,17 @@
+---
+// Wellenförmige Trennlinie zwischen zwei Sektionen (Meer-Motiv).
+// `fill` = Farbtoken (page, soft, warm …) der NÄCHSTEN Sektion, die von unten in die Welle hineinragt.
+interface Props { fill?: string; bg?: string; flip?: boolean; variant?: 1 | 2 | 3; class?: string }
+const { fill = 'page', bg, flip = false, variant = 1, class: cls = '' } = Astro.props;
+const paths = {
+  1: 'M0 60 C 180 10, 360 10, 540 45 S 900 95, 1080 55 S 1340 15, 1440 40 L1440 100 L0 100 Z',
+  2: 'M0 45 C 220 95, 420 95, 640 55 S 1000 5, 1200 40 S 1380 70, 1440 50 L1440 100 L0 100 Z',
+  3: 'M0 55 C 120 25, 300 25, 480 55 S 780 90, 960 50 S 1300 10, 1440 55 L1440 100 L0 100 Z',
+};
+---
+<div class={`wave ${cls}`} aria-hidden="true" style={flip ? 'transform: scaleY(-1)' : undefined}>
+  <svg viewBox="0 0 1440 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    {bg && <rect width="1440" height="97" style={`fill: var(--color-${bg})`} />}
+    <path d={paths[variant]} style={`fill: var(--color-${fill})`} />
+  </svg>
+</div>

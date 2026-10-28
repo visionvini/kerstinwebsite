@@ -1,0 +1,116 @@
+---
+import Base from '../layouts/Base.astro';
+import { site, ortSuffix } from '../config/site';
+import { rezensionen as alle } from '../data/rezensionen';
+import Wave from '../components/Wave.astro';
+import BlobImage from '../components/BlobImage.astro';
+
+const title = `Gestalt- und Paartherapie in ${site.ort} | Kerstin Bonke`;
+const description = `Kerstin Bonke, Gestalttherapeutin und Paartherapeutin: Begleitung bei Krisen und in Beziehungen, in ${site.ort} oder online. Kostenfreies Erstgespräch.`;
+
+// Ohne JavaScript erscheint diese feste Auswahl (Wunsch der Kundin, 27.10.). Mit JavaScript wird bei jedem Aufruf neu gemischt.
+const start = ['Aptus', 'Zoe', 'Manfred', 'Renate', 'N.N.', 'Achim', 'Jeanette'];
+const idx = (n: string) => start.findIndex((k) => n.includes(k));
+const sichtbar = (n: string) => idx(n) >= 0;
+const rezensionen = [...alle].sort((a, b) => {
+  const ia = idx(a.name), ib = idx(b.name);
+  return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
+});
+const FARBEN = 'mb-6 break-inside-avoid rounded-[2rem] bg-white p-7 shadow-sm';
+---
+<Base title={title} description={description} isHome>
+  <section class="bg-accent text-white">
+    <div class="mx-auto max-w-6xl px-4 pt-8 pb-10 md:pt-20 md:pb-14 grid grid-cols-[minmax(0,1fr)_auto] md:grid-cols-[1.25fr_1fr] gap-x-5 gap-y-6 md:gap-10 items-center">
+      <div class="contents md:block">
+        <h1 class="order-1 text-2xl min-[400px]:text-[1.7rem] md:text-4xl text-white">Gestalttherapie und Paartherapie {ortSuffix}</h1>
+        <div class="order-3 col-span-2 md:col-auto">
+          <ul class="mt-2 md:mt-7 space-y-1.5 list-disc pl-6 text-lg md:text-xl marker:text-sea">
+            <li>mein offener Blick</li>
+            <li>mein Vertrauen in die Selbstheilungskräfte des Organismus</li>
+            <li>meine erworbenen Fähigkeiten und Kompetenzen</li>
+            <li>meine Liebe für die Freiheit und die Schönheit des Seins</li>
+          </ul>
+          <p class="mt-6 text-lg md:text-xl">sind mit dabei bei der Reise in deine Wahrheit, die ihren Ausdruck findet und die alles sein lässt, was ist.</p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a class="btn btn-light" href="/kontakt">Kostenfreies Erstgespräch</a>
+            <a class="btn btn-outline-light" href="/gestalttherapie">Wie ich arbeite</a>
+          </div>
+        </div>
+      </div>
+      <BlobImage src="/bilder/portraet-klippe.jpg" alt="Kerstin Bonke am Meer" shape={1} ratio="4/5" class="order-2 md:order-none w-[8.5rem] min-[380px]:w-40 min-[420px]:w-48 md:w-full md:max-w-sm justify-self-end md:justify-self-center ring-4 ring-white/25 md:ring-0" />
+      <!-- [KLÄREN] Rechte am Porträt: Fotograf Peter Bonke -->
+    </div>
+  </section>
+  <Wave fill="page" bg="accent" variant={1} />
+
+  <section class="mx-auto max-w-6xl px-4 py-14 md:py-20 grid md:grid-cols-[1.1fr_1fr] gap-12 items-center">
+    <div class="prose-block text-base md:text-lg flow-root">
+      <BlobImage src="/bilder/mohn-himmel.jpg" alt="Mohnblumen vor blauem Himmel" shape={1} ratio="4/5" class="md:hidden float-right ml-4 mb-2 w-[54%] [shape-outside:ellipse(50%_50%_at_50%_50%)]" />
+      <p>Über 13 Jahre war ich als Gestalttherapeutin in eigener Praxis tätig. Das heißt, es ist mir vertraut, mit Menschen im gemeinsamen Prozess durch tiefe, schmerzhafte Schichten zu gehen, Blockaden zu lösen, Schatten zu integrieren, kreative Lösungen zu finden und das Gewollte, Gewünschte empor steigen zu lassen.</p>
+      <p>Heute in dieser Zeit ist alles in großer Bewegung und Veränderung, immer leichter ist es möglich, auf schnelle energetische Weise schnelle Veränderungen geschehen zu lassen. Allein das Bewusstsein muss bereit dafür sein oder werden.</p>
+      <BlobImage src="/bilder/hortensie.jpg" alt="Rosa Hortensien" shape={3} ratio="1/1" class="md:hidden float-left mr-4 mt-3 mb-2 w-[46%] [shape-outside:ellipse(50%_50%_at_50%_50%)]" />
+      <p class="mt-4">Ich habe mich entschieden, für den Moment den festen gewohnten Rahmen der Form (eines strukturierten Praxisalltags) zu verlassen, und überwiegend online zu arbeiten, wobei persönliche Treffen möglich sind, wenn es die räumliche Nähe zulässt.</p>
+      <p>Als Gestalttherapeutin, die sich seit Jahrzehnten mit energetischen, spirituellen Themen und mit Meditation und Achtsamkeit befasst, kombiniere ich die Haltung und Methoden der Gestalttherapie mit energetischem Wirken, wenn Offenheit dafür besteht.</p>
+      <BlobImage src="/bilder/glockenblume.jpg" alt="Glockenblumen auf einem Felsen" shape={2} ratio="1/1" class="md:hidden float-right ml-4 mt-4 mb-2 w-[48%] [shape-outside:ellipse(50%_50%_at_50%_50%)]" />
+      <p class="mt-4 font-serif text-lg md:text-xl text-accent">Ich freue mich auf einen lebendigen, kreativen, inspirierten, verändernden und sehr feinen und achtsamen gemeinsamen Prozess mit dir!</p>
+      <a class="btn mt-2" href="/kontakt">Erstgespräch vereinbaren</a>
+    </div>
+    <div class="hidden md:block relative mx-auto w-full max-w-md aspect-[4/5]" aria-label="Blumenbilder">
+      <BlobImage src="/bilder/mohn-himmel.jpg" alt="Mohnblumen vor blauem Himmel" shape={1} ratio="4/5" class="absolute left-0 top-0 w-[68%]" />
+      <BlobImage src="/bilder/hortensie.jpg" alt="Rosa Hortensien" shape={3} ratio="1/1" class="absolute right-0 top-[22%] w-[48%] ring-8 ring-page" />
+      <BlobImage src="/bilder/glockenblume.jpg" alt="Glockenblumen auf einem Felsen" shape={2} ratio="1/1" class="absolute left-[14%] bottom-0 w-[50%] ring-8 ring-page" />
+    </div>
+  </section>
+
+  <Wave fill="soft" variant={2} />
+  <section class="bg-soft">
+    <div class="mx-auto max-w-6xl px-4 py-14 grid md:grid-cols-2 gap-10 items-center">
+      <BlobImage src="/bilder/portraet-klippe-seitlich.jpg" alt="Kerstin Bonke am Meer, der Wind im Haar" shape={1} ratio="8/7" class="w-full" />
+      <div>
+        <h2 class="text-3xl text-accent">Ein Wort zu mir</h2>
+        <p class="mt-4">Wir brauchen den Zugang zu unserer Quelle, der Quelle allen Lebens. Diese gibt uns Kraft, Stabilität und Freiheit. Wenn du diese unabhängige und gleichzeitig mit allem verbundene Kraft in dir noch weiter freilegen willst, bist du hier richtig.</p>
+        <a class="mt-4 inline-block" href="/ueber-mich">Mehr über mich</a>
+        <h3 class="mt-8 text-xl text-accent">Themen</h3>
+        <ul class="mt-3 space-y-2">
+          <li><a href="/lebenskrisen">Lebenskrisen und Umbrüche</a></li>
+          <li><a href="/psychische-belastungen">Psychische Belastungen</a></li>
+          <li><a href="/geistige-behinderung">Menschen mit kognitiver Beeinträchtigung</a></li>
+        </ul>
+      </div>
+    </div>
+
+    {rezensionen.length > 0 && (
+      <div class="mx-auto max-w-6xl px-4 pb-16">
+        <h2 class="text-3xl text-accent">Rückmeldungen</h2>
+        <div id="rv-liste" class="mt-8 columns-1 gap-6 md:columns-2 lg:columns-3">
+          {rezensionen.map((t, i) => (
+            <figure data-rv class:list={[FARBEN, !sichtbar(t.name) && 'hidden', i % 2 === 1 && 'lg:rounded-tl-[3.5rem]', i % 3 === 0 && 'lg:rounded-br-[3.5rem]']}>
+              <blockquote class="space-y-3 text-[0.95rem]">{t.text.map((p) => <p>{p}</p>)}</blockquote>
+              <figcaption class="mt-5 font-serif text-accent">{t.name}</figcaption>
+            </figure>
+          ))}
+        </div>
+        <div class="mt-12 text-center"><a class="btn" href="/rueckmeldungen">Alle Rückmeldungen lesen</a></div>
+      </div>
+    )}
+  </section>
+</Base>
+<script is:inline>
+  // Rückmeldungen: bei jedem Aufruf eine andere Auswahl (alle gleichberechtigt)
+  (function () {
+    var box = document.getElementById('rv-liste');
+    if (!box) return;
+    var all = Array.prototype.slice.call(box.querySelectorAll('[data-rv]'));
+    for (var i = all.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = all[i]; all[i] = all[j]; all[j] = t;
+    }
+    all.forEach(function (f, n) {
+      var show = n < 6;
+      f.classList.toggle('hidden', !show);
+      f.classList.toggle('lg:rounded-tl-[3.5rem]', show && n % 2 === 1);
+      f.classList.toggle('lg:rounded-br-[3.5rem]', show && n % 3 === 0);
+      box.appendChild(f);
+    });
+  })();
+</script>

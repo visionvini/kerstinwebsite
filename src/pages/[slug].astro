@@ -1,0 +1,118 @@
+---
+import Base from '../layouts/Base.astro';
+import Wave from '../components/Wave.astro';
+import BlobImage from '../components/BlobImage.astro';
+import { visiblePages, pageBySlug, type PageData } from '../data/pages';
+
+export function getStaticPaths() {
+  return visiblePages.map((p) => ({ params: { slug: p.slug }, props: { page: p } }));
+}
+const { page } = Astro.props as { page: PageData };
+const related = (page.related ?? []).map(pageBySlug).filter((p): p is PageData => !!p && !p.hidden);
+let imgIndex = 0;
+---
+<Base title={page.title} description={page.meta} noindex={page.draft} faq={page.faq}>
+  <header class="bg-warm">
+    <div class={`mx-auto max-w-5xl px-4 pt-14 pb-8 grid gap-10 items-center ${page.heroImage ? 'md:grid-cols-[1.3fr_1fr]' : ''}`}>
+      <div>
+        <h1 class="text-4xl md:text-5xl text-accent">{page.h1}</h1>
+        {page.intro && <p class="mt-5 text-lg">{page.intro}</p>}
+        {page.quote && (
+          <blockquote class="mt-6 border-l-4 border-sea pl-5 font-serif text-xl italic text-accent-dark">
+            „{page.quote.text}“
+            {page.quote.author && <footer class="mt-2 text-sm not-italic text-ink/70">{page.quote.author}</footer>}
+          </blockquote>
+        )}
+      </div>
+      {page.heroImage && (
+        <BlobImage src={page.heroImage.src} alt={page.heroImage.alt} shape={page.heroImage.shape ?? 1} ratio={page.heroImage.ratio ?? '4/5'} class="w-full max-w-sm justify-self-center" />
+      )}
+    </div>
+  </header>
+  <Wave fill="page" variant={1} class="bg-warm" />
+
+  <article class="mx-auto max-w-5xl px-4 pb-14">
+    {page.sections.map((s) => {
+      const hasImg = !!s.image;
+      const left = hasImg && imgIndex++ % 2 === 1;
+      return (
+        <section class={`mt-12 ${hasImg ? 'grid gap-10 items-center md:grid-cols-2' : 'max-w-3xl'}`}>
+          <div class={left ? 'md:order-2' : ''}>
+            {s.h2 && <h2 class="text-2xl md:text-3xl text-accent">{s.h2}</h2>}
+            <div class={`prose-block ${s.h2 ? 'mt-3' : ''} ${s.lead ? 'text-xl' : ''}`}>
+              {s.paragraphs?.map((t) => <p>{t}</p>)}
+              {s.items && <ul class="list-disc pl-6 space-y-1.5">{s.items.map((i) => <li>{i}</li>)}</ul>}
+              {s.link && <a class="btn" href={s.link.href}>{s.link.label}</a>}
+              {s.links && <ul class="space-y-2">{s.links.map((l) => <li><a href={l.href} rel="noopener">{l.label}</a></li>)}</ul>}
+            </div>
+          </div>
+          {s.image && (
+            <BlobImage src={s.image.src} alt={s.image.alt} shape={s.image.shape ?? 1} ratio={s.image.ratio ?? '4/3'} class={`w-full ${left ? 'md:order-1' : ''}`} />
+          )}
+        </section>
+      );
+    })}
+
+    {page.testimonials && (
+      <div class="mt-12 columns-1 md:columns-2 lg:columns-3 gap-6">
+        {page.testimonials.map((t) => (
+          <figure class="review mb-6 break-inside-avoid rounded-[2rem] bg-sea/50 p-7">
+            <blockquote class="review-text space-y-3">{t.text.map((p) => <p>{p}</p>)}</blockquote>
+            <button type="button" class="review-toggle mt-3 hidden text-sm font-semibold text-accent underline underline-offset-4" aria-expanded="false">Weiterlesen</button>
+            <figcaption class="mt-4 font-serif text-accent">{t.name}</figcaption>
+          </figure>
+        ))}
+      </div>
+    )}
+
+    {page.faq && (
+      <section class="mt-12 max-w-3xl">
+        <h2 class="text-2xl text-accent">Häufige Fragen</h2>
+        <div class="mt-4 divide-y divide-line border-y border-line">
+          {page.faq.map((f) => (
+            <details class="py-3">
+              <summary class="cursor-pointer font-semibold">{f.q}</summary>
+              <p class="mt-2">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+    )}
+
+    {!page.draft && (
+      <div class="mt-14 rounded-[2rem] bg-sea/70 p-7 max-w-3xl">
+        <p class="font-serif text-xl text-accent">Kostenfreies telefonisches Erstgespräch</p>
+        <p class="mt-1 text-sm">Wir klären unverbindlich, was dran ist und wie wir arbeiten können.</p>
+        <a class="btn mt-4" href="/kontakt">{page.cta}</a>
+      </div>
+    )}
+
+    {related.length > 0 && (
+      <nav class="mt-10" aria-label="Weiterlesen">
+        <p class="font-semibold">Weiterlesen</p>
+        <ul class="mt-2 flex flex-wrap gap-x-5 gap-y-1">
+          {related.map((r) => <li><a href={`/${r.slug}`}>{r.navLabel ?? r.h1}</a></li>)}
+        </ul>
+      </nav>
+    )}
+  </article>
+</Base>
+{page.testimonials && (
+  <script is:inline>
+    (function () {
+      document.querySelectorAll('.review').forEach(function (fig) {
+        var q = fig.querySelector('.review-text');
+        var b = fig.querySelector('.review-toggle');
+        if (!q || !b) return;
+        q.classList.add('is-clamped');
+        if (q.scrollHeight <= q.clientHeight + 4) { q.classList.remove('is-clamped'); return; }
+        b.classList.remove('hidden');
+        b.addEventListener('click', function () {
+          var open = q.classList.toggle('is-clamped') === false;
+          b.setAttribute('aria-expanded', String(open));
+          b.textContent = open ? 'Weniger anzeigen' : 'Weiterlesen';
+        });
+      });
+    })();
+  </script>
+)}

@@ -1,0 +1,98 @@
+---
+import { site } from '../config/site';
+import { visiblePages } from '../data/pages';
+
+const themen = visiblePages.filter((p) => p.nav === 'themen');
+const angebotExtra = visiblePages.filter((p) => p.nav === 'angebot-extra');
+const path = Astro.url.pathname.replace(/\/$/, '');
+const cur = (href: string) => (path === href ? 'page' : undefined);
+---
+<header id="site-header" class="sticky top-0 z-20 isolate">
+  <div class="nav-bg absolute inset-0 -z-10" aria-hidden="true">
+    <div class="absolute inset-0 bg-white"></div>
+    <svg class="nav-wave absolute left-0 top-full w-full" viewBox="0 0 1440 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 0 H1440 V14 C 1300 40, 1160 38, 1000 20 S 700 -4, 520 20 S 200 44, 0 18 Z" fill="#ffffff" />
+    </svg>
+  </div>
+  <div class="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between gap-4">
+    <a href="/" class="font-serif text-lg text-accent no-underline" aria-label={`${site.name}, Startseite`}>
+      {site.name}<span class="block text-xs font-sans text-ink/60 -mt-1">Gestalt- und Paartherapie</span>
+    </a>
+
+    <nav aria-label="Hauptmenü" class="hidden md:flex items-center gap-6 text-sm">
+      <a href="/" class="no-underline hover:text-accent" aria-current={cur('')}>Startseite</a>
+      <div class="group relative">
+        <a href="/gestalttherapie" class="no-underline hover:text-accent" aria-current={cur('/gestalttherapie')}>Angebot</a>
+        <ul class="invisible group-hover:visible group-focus-within:visible absolute left-0 top-full pt-2 w-64 bg-white border border-line rounded-lg shadow p-2">
+          {angebotExtra.map((p) => (
+            <li><a class="block px-3 py-2 no-underline hover:bg-soft rounded" href={`/${p.slug}`} aria-current={cur(`/${p.slug}`)}>{p.navLabel}</a></li>
+          ))}
+        </ul>
+      </div>
+      <div class="group relative">
+        <a href="/gestalt" class="no-underline hover:text-accent" aria-current={cur('/gestalt')}>Gestalt</a>
+        <ul class="invisible group-hover:visible group-focus-within:visible absolute left-0 top-full pt-2 w-64 bg-white border border-line rounded-lg shadow p-2">
+          {themen.map((p) => (
+            <li><a class="block px-3 py-2 no-underline hover:bg-soft rounded" href={`/${p.slug}`} aria-current={cur(`/${p.slug}`)}>{p.navLabel}</a></li>
+          ))}
+        </ul>
+      </div>
+      <div class="group relative">
+        <a href="/ueber-mich" class="no-underline hover:text-accent" aria-current={cur('/ueber-mich')}>Über mich</a>
+        <ul class="invisible group-hover:visible group-focus-within:visible absolute left-0 top-full pt-2 w-56 bg-white border border-line rounded-lg shadow p-2">
+          <li><a class="block px-3 py-2 no-underline hover:bg-soft rounded" href="/ueber-mich" aria-current={cur('/ueber-mich')}>Über mich</a></li>
+          <li><a class="block px-3 py-2 no-underline hover:bg-soft rounded" href="/rueckmeldungen" aria-current={cur('/rueckmeldungen')}>Rückmeldungen</a></li>
+        </ul>
+      </div>
+      <a href="/kontakt" class="no-underline hover:text-accent" aria-current={cur('/kontakt')}>Kontakt</a>
+      <a href="/kontakt" class="btn !py-2 !px-4 no-underline">Erstgespräch</a>
+    </nav>
+
+    <details id="mobile-menu" class="md:hidden relative">
+      <summary class="burger cursor-pointer list-none flex h-11 w-11 items-center justify-center rounded-full border border-line bg-white/80" aria-label="Menü öffnen oder schließen">
+        <span class="burger-lines" aria-hidden="true"><i></i><i></i><i></i></span>
+      </summary>
+      <nav aria-label="Mobiles Menü" class="mobile-panel absolute right-0 top-full mt-3 w-[min(20rem,calc(100vw-2rem))] max-h-[calc(100dvh-6rem)] overflow-y-auto bg-white border border-line rounded-2xl shadow-lg p-2 text-base">
+        <a class="block px-3 py-3 no-underline font-semibold text-accent" href="/">Startseite</a>
+        <details name="mnav" class="acc">
+          <summary class="acc-sum">Angebot</summary>
+          <ul class="pb-2 pl-3">
+            <li><a class="block px-3 py-2 no-underline" href="/gestalttherapie">Angebot</a></li>
+            {angebotExtra.map((p) => <li><a class="block px-3 py-2 no-underline" href={`/${p.slug}`}>{p.navLabel}</a></li>)}
+          </ul>
+        </details>
+        <details name="mnav" class="acc">
+          <summary class="acc-sum">Gestalt</summary>
+          <ul class="pb-2 pl-3">
+            <li><a class="block px-3 py-2 no-underline" href="/gestalt">Gestalttherapie</a></li>
+            {themen.map((p) => <li><a class="block px-3 py-2 no-underline" href={`/${p.slug}`}>{p.navLabel}</a></li>)}
+          </ul>
+        </details>
+        <details name="mnav" class="acc">
+          <summary class="acc-sum">Über mich</summary>
+          <ul class="pb-2 pl-3">
+            <li><a class="block px-3 py-2 no-underline" href="/ueber-mich">Über mich</a></li>
+            <li><a class="block px-3 py-2 no-underline" href="/rueckmeldungen">Rückmeldungen</a></li>
+          </ul>
+        </details>
+        <a class="block px-3 py-3 no-underline border-t border-line" href="/kontakt">Kontakt</a>
+        <a class="btn m-1 mt-2 block text-center no-underline" href="/kontakt">Erstgespräch</a>
+      </nav>
+    </details>
+  </div>
+</header>
+<script is:inline>
+  (function () {
+    var h = document.getElementById('site-header');
+    if (!h) return;
+    var on = function () { h.classList.toggle('is-scrolled', window.scrollY > 8); };
+    on();
+    window.addEventListener('scroll', on, { passive: true });
+    // Mobiles Menü: Tipp irgendwo außerhalb (oder Escape) klappt es wieder zu
+    var m = document.getElementById('mobile-menu');
+    if (m) {
+      document.addEventListener('click', function (e) { if (m.open && !m.contains(e.target)) m.open = false; });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') m.open = false; });
+    }
+  })();
+</script>
