@@ -43,7 +43,7 @@ export const pages: PageData[] = [
     title: `Gestalttherapie ${ortSuffix} | Kerstin Bonke`,
     h1: 'Gestalttherapie',
     meta: `Gestalttherapie mit Kerstin Bonke: online oder persönlich in ${site.ort}. Kostenfreies telefonisches Erstgespräch, Konditionen nach Absprache.`,
-    heroImage: { src: '/bilder/portraet-vorhang.jpg', alt: 'Kerstin Bonke, Gestalttherapeutin', shape: 1, ratio: '1/1' },
+    heroImage: { src: '/bilder/angebot-meer.jpg', alt: 'Wellen brechen an dunklen Felsen im Meer', shape: 3, ratio: '1/1' },
     intro: 'Ich biete meine Kompetenzen, meine Erfahrung und einen weiten Raum voller Klarheit für dich.',
     sections: [
       {
@@ -57,7 +57,6 @@ export const pages: PageData[] = [
           'ein einmaliger Termin zu einem bestimmten Thema, einer bestimmten Fragestellung',
           'eine intensive Begleitung über einen bestimmten Zeitraum',
         ],
-        image: { src: '/bilder/angebot-meer.jpg', alt: 'Wellen brechen an dunklen Felsen im Meer', shape: 3, ratio: '4/3' },
       },
       {
         paragraphs: [
@@ -263,7 +262,7 @@ export const pages: PageData[] = [
     title: 'Ausrichtung | Kerstin Bonke',
     h1: 'Ausrichtung',
     meta: 'Zwischen Wissen um die Einheit und dem Alltag: warum es hilft, sich auch den inneren Zuständen zuzuwenden, die nicht der Ausrichtung entsprechen.',
-    heroImage: { src: '/bilder/startseite-hero-berge.jpg', alt: 'Adler auf einem Felsen vor Bergen', shape: 2, ratio: '3/2' },
+    heroImage: { src: '/bilder/ausrichtung-spirale.jpg', alt: 'Konzentrische schwarz-weiße Kreise auf einem Stein', shape: 2, ratio: '4/3' }, // TODO: Adlerbild (Original ohne Text) von Kerstin, falls gewünscht
     sections: [
       {
         paragraphs: [
@@ -533,10 +532,11 @@ export const pages: PageData[] = [
     sections: [
       {
         links: [
-          { href: 'https://psychologe-vaihingen.de', label: 'psychologe-vaihingen.de' },
-          { href: 'https://fortbildungen-erfahrbar.de', label: 'fortbildungen-erfahrbar.de' },
-          { href: 'https://peter-bonke-fotodesign.de', label: 'peter-bonke-fotodesign.de' },
-          { href: 'https://vinculostudio.de', label: 'vinculostudio.de' },
+          { href: 'https://www.fortbildungen-erfahrbar.de', label: 'Fortbildungen erfahrbar (fortbildungen-erfahrbar.de)' },
+          { href: 'https://www.psychologe-vaihingen.de', label: 'Thomas Janotta-Tsaknis (psychologe-vaihingen.de)' },
+          { href: 'https://www.peter-bonke-fotodesign.de', label: 'Peter Bonke, Fotodesign (peter-bonke-fotodesign.de)' },
+          { href: 'https://vinculostudio.de', label: 'Vinculo Studio (vinculostudio.de)' },
+          { href: 'https://www.instagram.com/kerstinbonke/', label: 'Instagram (@kerstinbonke)' },
         ],
       },
     ],
