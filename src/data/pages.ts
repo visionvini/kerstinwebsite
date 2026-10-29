@@ -57,6 +57,7 @@ export const pages: PageData[] = [
           'ein einmaliger Termin zu einem bestimmten Thema, einer bestimmten Fragestellung',
           'eine intensive Begleitung über einen bestimmten Zeitraum',
         ],
+        image: { src: '/bilder/angebot-meer.jpg', alt: 'Wellen brechen an dunklen Felsen im Meer', shape: 3, ratio: '4/3' },
       },
       {
         paragraphs: [
