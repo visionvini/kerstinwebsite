@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import { site } from '../config/site';
 
 const title = 'Kontakt und Erstgespräch | Kerstin Bonke';
-const description = `Kostenfreies telefonisches Erstgespräch mit Kerstin Bonke vereinbaren: per Telefon oder Formular. Büro in ${site.ort}.`;
+const description = `Kostenfreies telefonisches Erstgespräch mit Kerstin Bonke vereinbaren: per Telefon oder E-Mail. Büro in ${site.ort}.`;
 ---
 <Base title={title} description={description}>
   <article class="mx-auto max-w-5xl px-4 py-14 grid md:grid-cols-2 gap-12">
@@ -12,13 +12,14 @@ const description = `Kostenfreies telefonisches Erstgespräch mit Kerstin Bonke 
       <p class="mt-5">Schreib mir, schick eine SMS oder eine Sprachnachricht. Im Erstgespräch klären wir telefonisch, was dich beschäftigt und ob wir zusammenarbeiten möchten. Es ist kostenfrei und unverbindlich.</p>
       <address class="not-italic mt-6 space-y-1">
         <p><a href={`tel:${site.telefon.replace(/\s/g, '')}`} class="font-semibold">{site.telefonAnzeige}</a></p>
-        <p>Festnetz: <a href="tel:+497117683991">0711 7 68 39 91</a> [PRÜFEN: noch aktuell?]</p>
+        <p>Festnetz: <a href="tel:+497117683991">0711 7 68 39 91</a></p>
         <p><a href={`mailto:${site.email}`}>{site.email}</a></p>
         <p class="pt-2">{site.strasse}<br />{site.plz} {site.ort}</p>
-        <!-- TODO: aktuelle Praxisadresse, Anfahrt und Barrierefreiheit nur ergänzen, wenn aktuell -->
+        {/* TODO: aktuelle Praxisadresse, Anfahrt und Barrierefreiheit nur ergänzen, wenn aktuell */}
       </address>
     </div>
 
+    {site.formUrl ? (
     <form class="space-y-4" method="post" action={site.formUrl || undefined}>
       <h2 class="text-2xl text-accent">Schreib mir</h2>
       {!site.formUrl && <p class="text-sm rounded bg-soft p-3">Formular noch nicht verbunden (Formward-URL fehlt in <code>src/config/site.ts</code>).</p>}
@@ -33,5 +34,11 @@ const description = `Kostenfreies telefonisches Erstgespräch mit Kerstin Bonke 
       <p class="text-xs text-ink/70">Mit dem Absenden stimmst du der Verarbeitung deiner Angaben zur Beantwortung der Anfrage zu. Mehr in der <a href="/datenschutz">Datenschutzerklärung</a>.</p>
       <button class="btn" type="submit">Anfrage senden</button>
     </form>
+    ) : (
+      <div class="rounded-[2rem] bg-sea/70 p-7 self-start">
+        <h2 class="text-2xl text-accent">Melde dich gern</h2>
+        <p class="mt-3">Ruf mich an oder schreib mir eine E-Mail an <a href={`mailto:${site.email}`}>{site.email}</a>. Ich melde mich zeitnah bei dir.</p>
+      </div>
+    )}
   </article>
 </Base>
