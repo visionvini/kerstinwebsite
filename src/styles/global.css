@@ -20,6 +20,8 @@ html { scroll-behavior: smooth; }
 body { font-family: var(--font-sans); color: var(--color-ink); background: var(--color-page); line-height: 1.7; }
 h1, h2, h3 { font-family: var(--font-serif); line-height: 1.2; }
 .prose-block p + p { margin-top: 1rem; }
+.prose-block p + ul, .prose-block ul + p, .prose-block ul + h3, .prose-block p + h3, .prose-block p + h4 { margin-top: 1rem; }
+.prose-block ul + ul { margin-top: .375rem; }
 .btn { display: inline-block; background: var(--color-accent); color: #fff; padding: .85rem 1.5rem; border-radius: .6rem; font-weight: 600; text-decoration: none; }
 .btn:hover { background: var(--color-accent-dark); }
 .btn-ghost { background: transparent; color: var(--color-accent); border: 1.5px solid var(--color-accent); }
