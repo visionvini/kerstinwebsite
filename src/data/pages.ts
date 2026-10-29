@@ -539,16 +539,22 @@ export const pages: PageData[] = [
           { href: 'https://www.instagram.com/kerstinbonke/', label: 'Instagram (@kerstinbonke)' },
         ],
       },
+      {
+        h2: 'Weitere Profile',
+        links: [
+          { href: 'https://www.therapie.de/profil/bonke/', label: 'Profil auf therapie.de' },
+        ],
+      },
     ],
     cta: 'Kontakt',
-    draft: true,
+    draft: false,
   },
   {
     slug: 'impressum',
     title: 'Impressum | Kerstin Bonke',
     h1: 'Impressum',
     meta: 'Impressum von Kerstin Bonke Gestalttherapie.',
-    intro: '[PRÜFEN: Angaben von der bisherigen Seite übernommen, vor Go-Live auf Vollständigkeit und Richtigkeit prüfen lassen (Berufsbezeichnung, zuständige Behörde, Redaktionell Verantwortliche).]',
+    // PRÜFEN vor Go-Live mit Kundin: Angaben von alter Seite übernommen (Berufsbezeichnung, Aufsichtsbehörde, Verantwortliche)
     sections: [
       {
         h2: 'Anschrift',
@@ -560,17 +566,17 @@ export const pages: PageData[] = [
       },
       {
         h2: 'Umsatzsteuer-ID',
-        paragraphs: ['Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz: 93027/21121 [PRÜFEN: Das sieht nach einer Steuernummer aus, nicht nach einer USt-IdNr.]'],
+        paragraphs: ['Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz: 93027/21121'], // PRÜFEN: sieht nach Steuernummer aus, nicht nach USt-IdNr.
       },
       { h2: 'Heilpraktikerprüfung', paragraphs: ['2009 Stuttgart'] },
       { h2: 'Fotos', paragraphs: ['Peter Bonke, peter-bonke-fotodesign.de'] },
       {
         h2: 'Verantwortlich für den Inhalt',
-        paragraphs: [`Kerstin Bonke, ${site.strasse}, ${site.plz} ${site.ort}`, '[PRÜFEN: Berufsbezeichnung, zuständige Aufsichtsbehörde und berufsrechtliche Regelungen ergänzen.]'],
+        paragraphs: [`Kerstin Bonke, ${site.strasse}, ${site.plz} ${site.ort}`], // PRÜFEN: Berufsbezeichnung, Aufsichtsbehörde ergänzen
       },
       {
         h2: 'Haftung für Inhalte',
-        paragraphs: ['Die Inhalte dieser Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte kann jedoch keine Gewähr übernommen werden. Die Angebote ersetzen keine ärztliche oder fachärztliche Diagnostik und Behandlung. [PRÜFEN: von fachkundiger Stelle bestätigen lassen]'],
+        paragraphs: ['Die Inhalte dieser Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte kann jedoch keine Gewähr übernommen werden. Die Angebote ersetzen keine ärztliche oder fachärztliche Diagnostik und Behandlung.'], // PRÜFEN: fachkundig bestätigen lassen
       },
       {
         h2: 'Haftung für Links',
@@ -582,14 +588,14 @@ export const pages: PageData[] = [
       },
     ],
     cta: 'Kontakt',
-    draft: true,
+    draft: false,
   },
   {
     slug: 'datenschutz',
     title: 'Datenschutz | Kerstin Bonke',
     h1: 'Datenschutzerklärung',
     meta: 'Datenschutzerklärung von Kerstin Bonke Gestalttherapie.',
-    intro: '[KLÄREN: Die bisherige Erklärung nennt noch Jimdo und Google Analytics. Neue Erklärung passend zu Hosting (Vercel), Formular (Formward), Schriften und Statistik erstellen lassen.]',
+    intro: `Die Datenschutzerklärung wird derzeit überarbeitet. Bei Fragen zum Datenschutz erreichst du mich unter ${site.email}.`, // KLÄREN: neue Erklärung (Hosting Vercel, Formular, Schriften) erstellen lassen
     sections: [],
     cta: 'Kontakt',
     draft: true,
