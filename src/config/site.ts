@@ -13,8 +13,7 @@ export const site = {
   telefonAnzeige: '0176 312 483 97',
   email: 'kontakt@kerstinbonke.de', // TODO: eine einheitliche Adresse klären (verbindung@ vs. kontakt@)
   instagram: 'https://www.instagram.com/kerstinbonke/',
-  // TODO Kundin: Formular-URL aus dem Formward-Konto der Kundin eintragen
-  formUrl: '',
+  formUrl: 'https://forms.formward.eu/f/a6710275-d677-490d-80d7-c35674443899',
   // Schalter, solange offen ist, was die Kundin tatsächlich anbietet
   persoenlichVorOrt: true, // TODO klären: persönliche Termine aktuell möglich?
   gruppeAktiv: true, // TODO klären: läuft die Gruppe noch? Sonst false (Seite entfällt, Redirect greift)
