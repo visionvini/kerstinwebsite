@@ -4,6 +4,15 @@ import { site } from '../config/site';
 
 const title = 'Kontakt und Erstgespräch | Kerstin Bonke';
 const description = `Kostenfreies telefonisches Erstgespräch mit Kerstin Bonke vereinbaren: per Telefon oder E-Mail. Büro in ${site.ort}.`;
+
+// Spam-Schutz: Die Formward-URL steht nicht als action im HTML, sondern base64-kodiert und wird erst
+// beim Absenden per Script gesetzt. Bots, die nur das HTML nach Formular-URLs durchsuchen, finden sie so nicht.
+// Das ist nur eine Hürde gegen simple Scraper, der eigentliche Schutz sind Honeypot, Zeitfalle und
+// die Origin-Liste/Rate-Limits im Formward-Dashboard.
+const formToken = site.formUrl ? Buffer.from(site.formUrl).toString('base64') : '';
+const turnstileKey: string = site.turnstileSiteKey;
+// Nur Ziffern und gängige Trennzeichen; String.raw, damit die Backslashes erhalten bleiben
+const telPattern = String.raw`[0-9+\s\-\/.\(\)]{6,25}`;
 ---
 <Base title={title} description={description}>
   <article class="mx-auto max-w-5xl px-4 py-14 grid md:grid-cols-2 gap-12">
@@ -20,20 +29,46 @@ const description = `Kostenfreies telefonisches Erstgespräch mit Kerstin Bonke 
     </div>
 
     {site.formUrl ? (
-    <form class="space-y-4" method="post" action={site.formUrl || undefined}>
+    <>
+    <form id="kontaktformular" class="relative space-y-4" method="post" data-t={formToken}>
       <h2 class="text-2xl text-accent">Schreib mir</h2>
-      {!site.formUrl && <p class="text-sm rounded bg-soft p-3">Formular noch nicht verbunden (Formward-URL fehlt in <code>src/config/site.ts</code>).</p>}
+      {/* Honeypot: für Menschen unsichtbar und leer, Bots füllen es aus (Formward-Feld _gotcha) */}
+      <div class="absolute -left-[9999px] h-px w-px overflow-hidden opacity-0" aria-hidden="true">
+        <label>Dieses Feld bitte leer lassen
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" /></label>
+      </div>
       <label class="block"><span class="text-sm font-semibold">Name</span>
-        <input name="name" required autocomplete="name" class="mt-1 w-full rounded-lg border border-line px-3 py-2" /></label>
+        <input name="name" required minlength="2" maxlength="100" autocomplete="name" class="mt-1 w-full rounded-lg border border-line px-3 py-2" /></label>
       <label class="block"><span class="text-sm font-semibold">E-Mail</span>
-        <input type="email" name="email" required autocomplete="email" class="mt-1 w-full rounded-lg border border-line px-3 py-2" /></label>
+        <input type="email" name="email" required maxlength="254" autocomplete="email" class="mt-1 w-full rounded-lg border border-line px-3 py-2" /></label>
       <label class="block"><span class="text-sm font-semibold">Telefon (optional, für Rückruf)</span>
-        <input type="tel" name="telefon" autocomplete="tel" class="mt-1 w-full rounded-lg border border-line px-3 py-2" /></label>
+        <input type="tel" name="telefon" maxlength="25" pattern={telPattern} title="Nur Ziffern und die Zeichen + - / ( ) Leerzeichen, mindestens 6 Zeichen" autocomplete="tel" class="mt-1 w-full rounded-lg border border-line px-3 py-2" /></label>
       <label class="block"><span class="text-sm font-semibold">Dein Anliegen</span>
-        <textarea name="message" rows="5" required class="mt-1 w-full rounded-lg border border-line px-3 py-2"></textarea></label>
+        <textarea name="message" rows="5" required minlength="10" maxlength="3000" class="mt-1 w-full rounded-lg border border-line px-3 py-2"></textarea></label>
+      {turnstileKey && <div class="cf-turnstile" data-sitekey={turnstileKey}></div>}
       <p class="text-xs text-ink/70">Mit dem Absenden stimmst du der Verarbeitung deiner Angaben zur Beantwortung der Anfrage zu. Mehr in der <a href="/datenschutz">Datenschutzerklärung</a>.</p>
+      <p id="kontakt-hinweis" class="hidden rounded bg-soft p-3 text-sm" role="status">Bitte nimm dir noch einen kurzen Moment und sende dann erneut ab.</p>
+      <noscript><p class="rounded bg-soft p-3 text-sm">Zum Absenden wird JavaScript benötigt. Alternativ erreichst du mich per Telefon oder an <a href={`mailto:${site.email}`}>{site.email}</a>.</p></noscript>
       <button class="btn" type="submit">Anfrage senden</button>
     </form>
+    {/* Zeitfalle: Das Formular wird erst nach 4 Sekunden Seitenzeit versendet; die Ziel-URL wird erst dann gesetzt. */}
+    <script>
+      const form = document.getElementById('kontaktformular') as HTMLFormElement | null;
+      if (form) {
+        const start = Date.now();
+        const hinweis = document.getElementById('kontakt-hinweis');
+        form.addEventListener('submit', (event) => {
+          if (Date.now() - start < 4000) {
+            event.preventDefault();
+            hinweis?.classList.remove('hidden');
+            return;
+          }
+          form.action = atob(form.dataset.t ?? '');
+        });
+      }
+    </script>
+    {turnstileKey && <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>}
+    </>
     ) : (
       <div class="rounded-[2rem] bg-sea/70 p-7 self-start">
         <h2 class="text-2xl text-accent">Melde dich gern</h2>

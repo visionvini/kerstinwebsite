@@ -14,6 +14,9 @@ export const site = {
   email: 'kontakt@kerstinbonke.de', // TODO: eine einheitliche Adresse klären (verbindung@ vs. kontakt@)
   instagram: 'https://www.instagram.com/kerstinbonke/',
   formUrl: 'https://forms.formward.eu/f/a6710275-d677-490d-80d7-c35674443899',
+  // Optional: Cloudflare-Turnstile-Site-Key. Leer lassen = aus. Vorher Secret Key in Formward hinterlegen
+  // und Datenschutzerklärung um Cloudflare Turnstile ergänzen (Drittanbieter außerhalb der EU).
+  turnstileSiteKey: '',
   // Schalter, solange offen ist, was die Kundin tatsächlich anbietet
   persoenlichVorOrt: true, // TODO klären: persönliche Termine aktuell möglich?
   gruppeAktiv: true, // TODO klären: läuft die Gruppe noch? Sonst false (Seite entfällt, Redirect greift)
